@@ -4,7 +4,7 @@ import { Menu, AccountCircle, Brightness4, Brightness7 } from '@mui/icons-materi
 import { Link } from 'react-router-dom'
 import { useStyles } from './styles'
 import { useTheme } from '@mui/material/styles'
-import Sidebar from '../Sidebar/Sidebar'
+import {Sidebar} from '../'
 
 const NavBar = () => {
   const classes = useStyles()
@@ -59,14 +59,20 @@ const NavBar = () => {
               variant='temporary'
               anchor='right'
               open={mobileOpen}
-              className={classes.drawerBackground}
               classes={{paper: classes.drawerPaper}}
               ModalProps={{keepMounted: true}}
             >
               <Sidebar setMobileOpen={setMobileOpen} />
             </Drawer>
           ) : (
-            <Drawer></Drawer>
+            <Drawer
+              classes={{paper: classes.drawerPaper}}
+              variant='permanent'
+              open
+              anchor='left'
+            >
+              <Sidebar setMobileOpen={setMobileOpen}/>
+            </Drawer>
           )}
         </nav>
       </div>
