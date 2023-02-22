@@ -12,6 +12,10 @@ const NavBar = () => {
   const theme = useTheme()
   const isAuthenticated = true
   const [mobileOpen, setMobileOpen] = useState(false)
+
+  const handleDrawerToggle = () => {
+    setMobileOpen((prev) => !prev)
+  }
   return (
     <>
       <AppBar position="fixed">
@@ -23,7 +27,7 @@ const NavBar = () => {
               style={{
                 outline: 'none',
               }}
-              onClick={() => {}}
+              onClick={handleDrawerToggle}
               className={classes.menuButton}
             >
               <Menu />
@@ -57,10 +61,11 @@ const NavBar = () => {
           {isMobile ? (
             <Drawer
               variant='temporary'
-              anchor='right'
+              anchor='left'
               open={mobileOpen}
               classes={{paper: classes.drawerPaper}}
               ModalProps={{keepMounted: true}}
+              onClose={handleDrawerToggle}
             >
               <Sidebar setMobileOpen={setMobileOpen} />
             </Drawer>
