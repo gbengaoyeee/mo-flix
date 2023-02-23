@@ -8,8 +8,8 @@ const MovieList = ({movies}) => {
     return (
         <Grid className={classes.moviesContainer}>
             {
-                movies.results.map((movie) => (
-                    <Movie key={movie.id} movie={movie} i={movie.id}/>
+                movies.results.map((movie, i) => (
+                    <Movie key={movie.id} movie={movie} i={i}/>
                 ))
             }
         </Grid>
