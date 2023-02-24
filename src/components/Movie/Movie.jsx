@@ -37,10 +37,14 @@ const Movie = ({movie, i}) => {
                         movie.poster_path ? <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} className={classes.image}/>
                         : <img src="https://www.fillmurray.com/200/300" alt={movie.title} className={classes.image} />
                     }
+                    <Typography className={classes.title} variant='h5' >{movie.title}</Typography>
+                    <Tooltip disableTouchListener title={`${parseFloat(movie.vote_average/2)}/5`} placement='bottom'>
+                        <div>
+                            <Rating value={movie.vote_average/2} readOnly precision={0.1} />
+                        </div>
+                    </Tooltip>
                 </Link>
-                
             </Grow>
-            <Typography className={classes.title} variant='h5' >{movie.title}</Typography>
         </Grid>
     )
 }
