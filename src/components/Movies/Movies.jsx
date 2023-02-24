@@ -7,6 +7,9 @@ import {MovieList} from '../'
 
 const Movies = () => {
   const { data, error, isLoading, isFetching } = useGetMoviesQuery()
+  const  {genreIdOrCategoryName} = useSelector((state) => state.currentGenreOrCategory)
+
+  console.log(genreIdOrCategoryName)
   if(isFetching) {
     return (
       <Box sx={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
