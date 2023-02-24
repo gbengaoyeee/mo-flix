@@ -12,8 +12,14 @@ export const tmdbApi = createApi({
             query: () => {
                 return `/movie/popular?page=${page}&api_key=${tmdbApiKey}`
             }
+        }),
+        //* Get Genres
+        getGenres: builder.query({
+            query: () => {
+                return `/genre/movie/list?api_key=${tmdbApiKey}`
+            }
         })
     })
 })
 
-export const { useGetMoviesQuery } = tmdbApi
+export const { useGetMoviesQuery, useGetGenresQuery } = tmdbApi
