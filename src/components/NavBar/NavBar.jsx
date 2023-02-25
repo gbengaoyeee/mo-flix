@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { useStyles } from './styles'
 import { useTheme } from '@mui/material/styles'
 import {Sidebar} from '../'
+import { Search } from '../'
 
 const NavBar = () => {
   const classes = useStyles()
@@ -38,7 +39,7 @@ const NavBar = () => {
               theme.palette.mode === 'dark' ? <Brightness7 /> : <Brightness4 />
             }
           </IconButton>
-          {!isMobile && 'Search...'}
+          {!isMobile && <Search />}
             <div>
               {
                 !isAuthenticated ? (
@@ -53,7 +54,7 @@ const NavBar = () => {
                 )
               }
             </div>
-            {isMobile && 'Search...'}
+            {isMobile && <Search />}
         </Toolbar>
       </AppBar>
       <div>
