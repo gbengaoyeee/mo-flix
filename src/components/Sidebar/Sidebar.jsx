@@ -23,8 +23,9 @@ const Sidebar = ({setMobileOpen}) => {
     const classes = useStyles()
     const { data, isFetching, error } = useGetGenresQuery()
     const dispatch = useDispatch()
-    // const  { genreIdOrCategoryName } = useSelector((state) => state.currentGenreOrCategory)
-    const genreCategorySearchState = useSelector((state) => state)
+    const  { genreIdOrCategoryName } = useSelector((state) => state.currentGenreOrCategory)
+
+    console.log(genreIdOrCategoryName)
 
     return (
         <>
@@ -37,7 +38,7 @@ const Sidebar = ({setMobileOpen}) => {
                 {
                     categories.map(({label, value}) => (
                         <Link to={`/movies/${value}`} key={value} className={classes.links}>
-                            <ListItemButton onClick={() => dispatch(selectGenreOrCategory({...genreCategorySearchState, genreIdOrCategoryName: value}))}>
+                            <ListItemButton onClick={() => dispatch(selectGenreOrCategory(value))}>
                                 <ListItemIcon>
                                     <img src={genreIcons[label.toLowerCase()]} className={classes.genreImages} height={30} alt="" />
                                 </ListItemIcon>
@@ -57,7 +58,7 @@ const Sidebar = ({setMobileOpen}) => {
                 ) :
                     data.genres.map(({name, id}) => (
                         <Link to={`/movies/${name.toLowerCase()}`} key={name} className={classes.links}>
-                            <ListItemButton onClick={() => dispatch(selectGenreOrCategory({...genreCategorySearchState, genreIdOrCategoryName: id}))}>
+                            <ListItemButton onClick={() => dispatch(selectGenreOrCategory(id))}>
                                 <ListItemIcon>
                                     <img src={genreIcons[name.toLowerCase()]} className={classes.genreImages} height={30} alt="" />
                                 </ListItemIcon>
